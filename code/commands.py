@@ -39,19 +39,7 @@ def take(command, window):
             # If there is a number convert it, but if there isnt let it be name
             try:
                 widget = query.group(1).split()
-                widget_name = widget[0]
-                try:
-                    direction = widget[2]+widget[3]
-                except IndexError:
-                    direction = widget[2]
-
-                # Temporary fix for speech recognizing two as to
-                if (widget[1] == 'to'):
-                    widget[1] = 'two'
-
-                widget_number = str(w2n.word_to_num(widget[1]))
-                widget = widget_name + widget_number
-
+                widget, direction = find_widget(widget)
                 for i in x:
                     # Fix for first widget created of its type has no number
                     if ('.!' + widget) == str(i) + '1':
@@ -61,6 +49,25 @@ def take(command, window):
             except Exception:
                 pass
 
+
+def find_widget(widget):
+    widget_name = widget[0]
+    try:
+        direction = widget[2]+widget[3]
+    except IndexError:
+        try:
+            direction = widget[2]
+        except Exception:
+            direction = 0
+    return widget_name, direction
+
+    # Temporary fix for speech recognizing two as to
+    if (widget[1] == 'to'):
+        widget[1] = 'two'
+
+    widget_number = str(w2n.word_to_num(widget[1]))
+    widget = widget_name + widget_number
+    return widget, direction
 
 
 def move(widget, direction):
