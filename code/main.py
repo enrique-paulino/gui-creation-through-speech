@@ -5,7 +5,7 @@ import threading
 
 window = tk.Tk()
 window.title("VoiceGUI")
-window.geometry('960x540')
+window.geometry("640x360")
 
 
 def rec():

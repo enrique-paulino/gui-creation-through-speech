@@ -17,15 +17,20 @@ def take(command, window):
         query = re.search('new (.+)', command)
         if query:
             widget = query.group(1).split()
-            widget = split_list(widget, 'text')
-            widget_command = '_'.join(widget[0])
-            widget_text = ' '.join(widget[1])
-            print(widget_text)
             try:
+                widget = split_list(widget, 'text')
+                widget_command = '_'.join(widget[0])
+                widget_text = ' '.join(widget[1])
                 func = getattr(__import__('widgets'), 'widget_'+widget_command)
                 func(window, widget_text)
-            except Exception as e:
-                print(e)
+            except Exception:
+                try:
+                    func = getattr(__import__('widgets'),
+                                   'widget_'+widget[0])
+                    func(window, '')
+                except Exception as e:
+                    print('Error, please try again.')
+                    print(e)
 
     elif 'move' in command:
         x = window.winfo_children()
@@ -35,6 +40,10 @@ def take(command, window):
             try:
                 widget = query.group(1).split()
                 widget_name = widget[0]
+                try:
+                    direction = widget[2]+widget[3]
+                except IndexError:
+                    direction = widget[2]
 
                 # Temporary fix for speech recognizing two as to
                 if (widget[1] == 'to'):
@@ -46,9 +55,32 @@ def take(command, window):
                 for i in x:
                     # Fix for first widget created of its type has no number
                     if ('.!' + widget) == str(i) + '1':
-                        i.place(relx=0.5, rely=0.5, anchor='center')
+                        move(i, direction)
                     if widget in str(i):
-                        i.place(relx=0.5, rely=0.5, anchor='center')  # Center
-
+                        move(i, direction)
             except Exception:
                 pass
+
+
+
+def move(widget, direction):
+    match direction:
+        case 'top':
+            return widget.pack(side='top', anchor='n')
+        case 'bottom':
+            return widget.pack(side='bottom', anchor='s')
+        case 'left':
+            return widget.pack(side='left', anchor='w')
+        case 'right':
+            return widget.pack(side='right', anchor='e')
+        case 'center' | 'centre':
+            return widget.place(relx=0.5, rely=0.5, anchor='center')
+
+        case 'topleft':
+            return widget.pack(side='top', anchor='nw')
+        case 'topright':
+            return widget.pack(side='top', anchor='ne')
+        case 'bottomleft':
+            return widget.pack(side='bottom', anchor='sw')
+        case 'bottomright':
+            return widget.pack(side='bottom', anchor='se')
