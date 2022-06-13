@@ -1,4 +1,5 @@
 import re
+from word2number import w2n
 
 
 def split_list(lst):
@@ -25,3 +26,16 @@ def take(command, window):
                 func(window, widget_text)
             except Exception as e:
                 print(e)
+
+    """elif 'move' in command:
+        x = window.winfo_children()
+        print(x)
+        query = re.search('move (.+)', command)
+        if query:
+            widget = query.group(1).split()
+            widget_name = widget[0]
+            widget_number = str(w2n.word_to_num(widget[1]))
+            widget = widget_name + widget_number
+            print(widget)
+            values = [s for s in x if any(xs in s for xs in [widget])]
+            print(values)"""
