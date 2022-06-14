@@ -14,7 +14,7 @@
   - Example: `hide button one` -> Hides button one.
 
   `show <widget_name>`: Hides specified widget.
-   - Example: `hide button one` -> Hides button one.
+   - Example: `hide button one` -> Shows button one.
 
 ## Available Widgets
   `BUTTON`, `CHECK BUTTON`, `RADIO BUTTON`  
