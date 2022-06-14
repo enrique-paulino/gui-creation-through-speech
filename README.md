@@ -1,5 +1,5 @@
 # GUI Creator using Speech Recognition
- A python program that allows the user to create a very basic GUI through speech recognition through voice commands.
+ A python program that allows the user to create a very basic GUI through speech recognition using voice commands.
 
 ## Commands
   `new <widget_name>`: Creates widget of that type.   
