@@ -16,6 +16,9 @@
   `show <widget_name>`: Shows specified widget.
    - Example: `show button one` -> Shows button one.
 
+   `list`: Lists all widgets.
+    - Example: `list` -> `.!button, .!label, .!button2`
+
 ## Available Widgets
   `BUTTON`, `CHECK BUTTON`, `RADIO BUTTON`  
   `ENTRY`, `LABEL`

@@ -111,7 +111,7 @@ def hide_command(window, command):  # Command to hide specific widget
             pass
 
 
-def show_command(window, command):  # Command to hide specific widget
+def show_command(window, command):  # Command to show specific widget
     x = window.winfo_children()
     query = re.search('show (.+)', command)
     if query:
@@ -129,6 +129,14 @@ def show_command(window, command):  # Command to hide specific widget
             pass
 
 
+def list_command(window, command):  # Command to print of all current widgets
+    query = re.search('list', command)
+    if query:
+        x = window.winfo_children()
+        a = ', '.join(str(widget) for widget in x)
+        print(a)
+
+
 def take(command, window):  # Main function
     if 'new' in command:
         new_command(window, command)
@@ -141,3 +149,6 @@ def take(command, window):  # Main function
 
     elif 'show' in command:
         show_command(window, command)
+
+    elif 'list' in command:
+        list_command(window, command)
