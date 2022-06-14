@@ -93,9 +93,51 @@ def move_command(window, command):  # Command to move specific widget
             pass
 
 
+def hide_command(window, command):  # Command to hide specific widget
+    x = window.winfo_children()
+    query = re.search('hide (.+)', command)
+    if query:
+        # If there is a number convert it, but if there isnt let it be name
+        try:
+            widget = query.group(1).split()
+            widget, direction = find_widget(widget)
+            for i in x:
+                # Fix for first widget created of its type has no number
+                if ('.!' + widget) == str(i) + '1':
+                    i.pack_forget()
+                if widget in str(i):
+                    i.pack_forget()
+        except Exception:
+            pass
+
+
+def show_command(window, command):  # Command to hide specific widget
+    x = window.winfo_children()
+    query = re.search('show (.+)', command)
+    if query:
+        # If there is a number convert it, but if there isnt let it be name
+        try:
+            widget = query.group(1).split()
+            widget, direction = find_widget(widget)
+            for i in x:
+                # Fix for first widget created of its type has no number
+                if ('.!' + widget) == str(i) + '1':
+                    i.pack()
+                if widget in str(i):
+                    i.pack()
+        except Exception:
+            pass
+
+
 def take(command, window):  # Main function
     if 'new' in command:
         new_command(window, command)
 
     elif 'move' in command:
         move_command(window, command)
+
+    elif 'hide' in command:
+        hide_command(window, command)
+
+    elif 'show' in command:
+        show_command(window, command)

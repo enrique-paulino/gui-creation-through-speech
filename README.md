@@ -10,6 +10,12 @@
   `move <widget_name> <direction>`: Moves widget to the specified direction.
    - Example: `move button one left` -> Moves button to left.
 
+  `hide <widget_name>`: Hides specified widget.
+  - Example: `hide button one` -> Hides button one.
+
+  `show <widget_name>`: Hides specified widget.
+   - Example: `hide button one` -> Hides button one.
+
 ## Available Widgets
   `BUTTON`, `CHECK BUTTON`, `RADIO BUTTON`  
   `ENTRY`  
