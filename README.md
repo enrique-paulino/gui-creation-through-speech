@@ -18,8 +18,7 @@
 
 ## Available Widgets
   `BUTTON`, `CHECK BUTTON`, `RADIO BUTTON`  
-  `ENTRY`  
-  `LABEL`
+  `ENTRY`, `LABEL`
 
   ## Available Directions
  `TOP`, `BOTTOM`, `LEFT`, `RIGHT`, `CENTER`  
