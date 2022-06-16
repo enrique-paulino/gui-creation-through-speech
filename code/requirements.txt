@@ -1,0 +1,2 @@
+SpeechRecognition==3.8.1
+word2number==1.1
