@@ -1,5 +1,5 @@
 # GUI Creator using Speech Recognition
- A python program that allows the user to create a very basic GUI through speech recognition using voice commands.
+ A python program that uses threading and Google's voice recognition to allow the user to design a very basic GUI through voice commands. This program is just a proof of concept and would require a large amount of work to measure up to current GUI designing applications. A method to improve this would be to use an already completed GUI design application, such as a drag and drop interface, and associate voice commands to each of the widgets in said program.
 
 ## Commands
   `new <widget_name>`: Creates widget of that type.   
@@ -23,6 +23,12 @@
   `BUTTON`, `CHECK BUTTON`, `RADIO BUTTON`  
   `ENTRY`, `LABEL`
 
-  ## Available Directions
+## Available Directions
  `TOP`, `BOTTOM`, `LEFT`, `RIGHT`, `CENTER`  
   `TOP LEFT`, `TOP RIGHT`, `BOTTOM LEFT`, `BOTTOM RIGHT`
+
+## How to Run
+1. Download project.
+2. Navigate to folder in command prompt.
+3. Enter `pip install -r requirements.txt`
+4. Run `main.py`
